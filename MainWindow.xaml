@@ -1,0 +1,38 @@
+﻿<Window x:Class="Localization.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Localization"
+        xmlns:p="clr-namespace:Localization.Properties"
+        xmlns:lang="clr-namespace:Localization.Properties.Lang"
+        mc:Ignorable="d"
+        Title="{x:Static p:Resources.Title}" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel>
+            <ComboBox x:Name="Test"
+                      SelectionChanged="Test_SelectionChanged">
+                <ComboBoxItem Content="{x:Static lang:Lang.en}"/>
+                <ComboBoxItem Content="{x:Static lang:Lang.ru}"/>
+                <ComboBoxItem Content="{x:Static lang:Lang.fr}"/>
+            </ComboBox>
+            <ComboBox x:Name="CbLangue">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <WrapPanel>
+                            <Image Source="{Binding Img}"/>
+                            <TextBlock Text="{Binding County}"/>
+                        </WrapPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </StackPanel>
+        <Frame x:Name="MainFrame"
+               Grid.Row="1"
+               NavigationUIVisibility="Hidden"/>
+    </Grid>
+</Window>
