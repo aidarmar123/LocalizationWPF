@@ -14,18 +14,17 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <StackPanel>
-            <ComboBox x:Name="Test"
-                      SelectionChanged="Test_SelectionChanged">
-                <ComboBoxItem Content="{x:Static lang:Lang.en}"/>
-                <ComboBoxItem Content="{x:Static lang:Lang.ru}"/>
-                <ComboBoxItem Content="{x:Static lang:Lang.fr}"/>
-            </ComboBox>
-            <ComboBox x:Name="CbLangue">
+           
+            <ComboBox x:Name="CbLangue"
+                      SelectionChanged="CbLangue_SelectionChanged">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <WrapPanel>
-                            <Image Source="{Binding Img}"/>
-                            <TextBlock Text="{Binding County}"/>
+                            <Image Source="{Binding Img}"
+                                   Width="30"/>
+                            <TextBlock Text="{Binding Name}"
+                                       Margin="5"
+                                       VerticalAlignment="Center"/>
                         </WrapPanel>
                     </DataTemplate>
                 </ComboBox.ItemTemplate>

@@ -1,4 +1,5 @@
-﻿using Localization.Pages;
+﻿using Localization.Models;
+using Localization.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,19 +22,27 @@ namespace Localization
     /// </summary>
     public partial class MainWindow : Window
     {
+        List<Languague> lang = new List<Languague>()
+        {
+            new Languague(Properties.Lang.Lang.en, "en-US","/Resourses/usa_icon.png"),
+            new Languague(Properties.Lang.Lang.ru, "ru-US","/Resourses/russia_icon.png"),
+            new Languague(Properties.Lang.Lang.fr, "fr-FR","/Resourses/france_icon.png"),
+        };
         public MainWindow()
         {
             InitializeComponent();
+            CbLangue.ItemsSource = lang;
             MainFrame.Navigate(new MainPage());
         }
 
-        private void Test_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void CbLangue_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (Test.SelectedIndex == 0)
-                Properties.Settings.Default.langCode = "en-US";
-            else if (Test.SelectedIndex == 1)
-                Properties.Settings.Default.langCode = "ru-RU";
-            Properties.Settings.Default.Save();
+            if(CbLangue.SelectedItem is Languague languague)
+            {
+                Properties.Settings.Default.langCode = languague.Value;
+                Properties.Settings.Default.Save();
+            }
+            
         }
     }
 }
